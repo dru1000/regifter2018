@@ -25,4 +25,12 @@ class BuyController extends Controller
 
         return view('buy_gift_cards', compact('retailers'));
     }
+
+    public function show()
+    {
+        $cards = \App\GiftCard::where('retailer_id', 1)
+            ->get();
+
+        return view('show_gift_cards', compact('cards'));
+    }
 }

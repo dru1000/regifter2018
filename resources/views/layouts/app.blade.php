@@ -14,9 +14,6 @@
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
 
 </head>
 
@@ -34,10 +31,10 @@
                 <div class="collapse navbar-collapse" id="navbar">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="/buy">Buy Gift Cards</a>
+                            <a class="nav-link" href="/buy-gift-cards">Buy Gift Cards</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/sell">Sell Gift Cards</a>
+                            <a class="nav-link" href="/sell-gift-cards">Sell Gift Cards</a>
                         </li>
                     </ul>
                     <!-- Right Side Of Navbar -->

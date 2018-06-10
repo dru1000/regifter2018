@@ -15,6 +15,8 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 
-Route::get('/buy', 'BuyController@index');
+Route::get('/buy-gift-cards', 'BuyController@index');
 
-Route::get('/sell', 'SellController@index');
+Route::get('/buy-gift-cards/{retailer}', 'BuyController@show');
+
+Route::get('/sell-gift-cards', 'SellController@index');
