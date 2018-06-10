@@ -3,7 +3,7 @@
 
 <section class="jumbotron text-center">
     <div class="container">
-        <h1 class="jumbotron-heading">Show Gift Cards</h1>
+        <h1 class="jumbotron-heading">{{ $name[0] }} Gift Cards</h1>
         <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but
             not too short so folks don't simply skip over it entirely.</p>
     </div>
@@ -13,31 +13,29 @@
 <div class="album py-5 bg-light">
     <div class="container">
 
-        <div class="row">
-            @foreach ($cards as $card)
+        <table class="table text-center">
+            <thead>
+                <tr>
+                    <th scope="col">Retailer</th>
+                    <th scope="col">Value</th>
+                    <th scope="col">Discount</th>
+                    <th scope="col">You Pay</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($cards as $card)
+                <tr>
+                    <th scope="row">{{ $name[0] }}</th>
+                    <td>${{ $card->value }}</td>
+                    <td>{{ $card->discount }}%</td>
+                    <td>${{ $card->sale_price }}</td>
+                    <td><a class="btn btn-primary" href="/buy-gift-cards/id/{{ $card->id }}" role="button">Link</a></td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
 
-            <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <a href="/buy-gift-cards/"><img class="card-img-top" src="{{ asset('img/thumbnail.svg') }}" alt="Card image cap"></a>
-                    <div class="card-body">
-
-                        <h3 class="card-text"><a href="/buy-gift-cards/"></a></h3>
-
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            @endforeach
-
-
-        </div>
     </div>
 </div>
 @endsection
