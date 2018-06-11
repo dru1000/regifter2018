@@ -30,7 +30,7 @@
                     <td>${{ $card->value }}</td>
                     <td>{{ $card->discount }}%</td>
                     <td>${{ $card->sale_price }}</td>
-                    <td><a class="btn btn-primary" href="/buy-gift-cards/id/{{ $card->id }}" role="button">Link</a></td>
+                    <td><a class="btn btn-primary" href="/buy-gift-cards/id/{{ $card->id }}" role="button">View</a></td>
                 </tr>
                 @endforeach
             </tbody>

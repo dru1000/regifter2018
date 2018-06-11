@@ -21,6 +21,15 @@ class SellController extends Controller
      */
     public function index()
     {
-        return view('sell_gift_cards');
+        $retailers = \App\Retailer::all();
+
+        return view('sell_gift_cards', compact('retailers'));
+    }
+
+    public function sell($url)
+    {
+        $retailer = \App\Retailer::where('url', $url)->first();
+
+        return view('sell_gift_cards_form', compact('retailer'));
     }
 }

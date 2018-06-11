@@ -38,6 +38,16 @@ class BuyController extends Controller
         $cards = \App\GiftCard::where('retailer_id', $retailer_id)
             ->get();
 
-        return view('show_gift_cards', compact('cards', 'name'));
+        return view('buy_gift_cards_show', compact('cards', 'name'));
+    }
+
+    public function detail($id)
+    {
+        $card = \App\GiftCard::where('id', $id)->first();
+
+        //Get the retailers name
+        $retailer = \App\Retailer::where('id', $card->retailer_id)->first();
+
+        return view('buy_gift_cards_detail', compact('card', 'retailer'));
     }
 }
