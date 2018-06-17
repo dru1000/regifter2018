@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+
 class SellController extends Controller
 {
     /**
@@ -31,5 +33,20 @@ class SellController extends Controller
         $retailer = \App\Retailer::where('url', $url)->first();
 
         return view('sell_gift_cards_form', compact('retailer'));
+    }
+
+    public function create()
+    {
+        //dd(request()->all());
+        //$request->user();
+        $user = Auth::user();
+
+        $card = new \App\GiftCard;
+        $card->user_id = $user->id;
+        $card->retailer_id = request('retailer_id');
+        $card->value = request('value');
+        $card->discount = request('discount');
+        $card->sale_price = request('sale_price');
+
     }
 }
