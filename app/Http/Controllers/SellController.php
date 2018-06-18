@@ -37,16 +37,24 @@ class SellController extends Controller
 
     public function create()
     {
-        //dd(request()->all());
-        //$request->user();
-        $user = Auth::user();
+        if (Auth::check()) {
+            $user = Auth::user();
 
-        $card = new \App\GiftCard;
-        $card->user_id = $user->id;
-        $card->retailer_id = request('retailer_id');
-        $card->value = request('value');
-        $card->discount = request('discount');
-        $card->sale_price = request('sale_price');
+            $card = new \App\GiftCard;
+
+            $card->user_id = $user->id;
+            $card->retailer_id = request('retailer_id');
+            $card->value = request('value');
+            $card->discount = request('discount');
+            $card->sale_price = request('sale_price');
+
+            $card->save();
+
+            return view('card_submitted');
+
+        } else {
+            return view('auth/login');
+        }
 
     }
 }

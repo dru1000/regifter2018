@@ -41,7 +41,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroupPrepend">$</span>
                             </div>
-                            <input name="sale_price" type="text" class="form-control" id="sale_price" disabled>
+                            <input name="sale_price" type="text" class="form-control" id="sale_price" readonly="readonly">
                         </div>
                     </div>
 
