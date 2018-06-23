@@ -1,4 +1,8 @@
 @extends('layouts.app') 
+@section('css')
+<link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet">
+@endsection
+ 
 @section('content')
 
 <section class="jumbotron text-center">
@@ -107,22 +111,18 @@
 
         </div>
 
+
+
+        <div id="slider" style=""></div>
     </div>
-</div>
 @endsection
  
 @section('js')
 
-<script>
-    $(document).ready(function () {
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
         //Calculate Sale Price
-        /* $("#discount").change(function () {
-            var discountValue = $("#value").val() * ($("#discount").val() / 100);
-            var salePrice = $("#value").val() - discountValue;
-            //alert("Sale Price = " + salePrice);
-            $("#sale_price").val(salePrice.toFixed(2));
-        }); */
-
         $("#discount").on('input', function () {
             var discountValue = $("#value").val() * ($("#discount").val() / 100);
             var salePrice = $("#value").val() - discountValue;
@@ -136,7 +136,24 @@
             //alert("Sale Price = " + salePrice);
             $("#sale_price").text("$" + salePrice.toFixed(2));
         });
+
+
+//$( "#slider" ).slider();
+
+    $( "#slider" ).slider({
+      orientation: "horizontal",
+      range: "min",
+      min:50,
+      max: 255,
+      value: 127
     });
 
-</script>
+
+    });
+    </script>
+
+
+    <script>
+
+    </script>
 @endsection

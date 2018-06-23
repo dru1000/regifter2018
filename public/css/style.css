@@ -16,3 +16,10 @@ main {
 .gift-card-card .card-body {
     padding-top: 0.5rem;
 }
+.ui-slider-range { 
+    background: #007bff;
+}
+
+.ui-widget {
+    font-size: 1.5rem;
+}
