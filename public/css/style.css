@@ -23,3 +23,7 @@ main {
 .ui-widget {
     font-size: 1.5rem;
 }
+
+.ui-slider-handle {
+    z-index: 1 !important;
+}

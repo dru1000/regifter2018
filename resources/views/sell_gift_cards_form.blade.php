@@ -22,7 +22,7 @@
             <div class="col-md-8 pr-5">
                 <form method="POST" action="/gift-cards">
                     {{ csrf_field() }}
-                    <h2>Sales price</h2>
+                    <h2>Set Sales price</h2>
 
 
                     <div class="form-group">
@@ -36,9 +36,18 @@
                         <small id="emailHelp" class="form-text text-muted">We accept gift cards up the the value of $200.</small>
                     </div>
 
-                    <div class="form-group">
-                        <label for="discount">Percentage Discount</label>
-                        <input name="discount" type="number" class="form-control form-control-lg" id="discount" placeholder="Discount">
+                    <div>
+                        <p class="mb-1">Percentage Discount</p>
+                        <div class="row">
+                            <div class="col pt-2">
+                                <div class="" name="slider" id="slider" style=""></div>
+                            </div>
+                            <div class="col-2  text-right">
+                                <div class="h4" id="discount">15%</div>
+                            </div>
+                            <input type="hidden" id="discount_hidden" name="discount_hidden" value="0">
+                        </div>
+                        <small id="emailHelp" class="form-text text-muted">Minimum discount is 10%.</small>
                     </div>
 
 
@@ -55,7 +64,7 @@
 
                     <div class="form-group">
                         <label for="expiry">Expiry Date</label>
-                        <input name="expiry" type="text" class="form-control form-control-lg" id="expiry">
+                        <input type="text" name="datepicker" id="datepicker" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="serial">Serial Number</label>
@@ -113,7 +122,7 @@
 
 
 
-        <div id="slider" style=""></div>
+
     </div>
 @endsection
  
@@ -122,13 +131,6 @@
     <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
     <script>
         $(document).ready(function () {
-        //Calculate Sale Price
-        $("#discount").on('input', function () {
-            var discountValue = $("#value").val() * ($("#discount").val() / 100);
-            var salePrice = $("#value").val() - discountValue;
-            //alert("Sale Price = " + salePrice);
-            $("#sale_price").text("$" + salePrice.toFixed(2));
-        });
 
         $("#value").on('input', function () {
             var discountValue = $("#value").val() * ($("#discount").val() / 100);
@@ -137,16 +139,33 @@
             $("#sale_price").text("$" + salePrice.toFixed(2));
         });
 
+        //JQUERY RANGE SLIDER
+        $( "#slider" ).slider({
+        orientation: "horizontal",
+        range: "min",
+        min:0,
+        max: 90,
+        value: 20,
+        //When the sliders value us changed
+        slide: function(event, ui) {
+                //Stop the user being able to move the slider below the minimum 
+                if (ui.value < 10) {
+                    return false;
+                }
+                //Update percentage discount text
+                $("#discount").text(ui.value + "%");
+                //Update sales price amount text
+                var discountValue = $("#value").val() * (ui.value / 100);
+                var salePrice = $("#value").val() - discountValue;
+                $("#sale_price").text("$" + salePrice.toFixed(2));
+            }
+        });
 
-//$( "#slider" ).slider();
-
-    $( "#slider" ).slider({
-      orientation: "horizontal",
-      range: "min",
-      min:50,
-      max: 255,
-      value: 127
-    });
+        $( "#datepicker" ).datepicker({
+            dateFormat: "dd-MM-yy",
+            changeMonth: true,
+            changeYear: true
+        });
 
 
     });
