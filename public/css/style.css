@@ -3,3 +3,16 @@ body,
 main {
     height: 100%;
 }
+
+.gift-card-card {
+    max-width: 237px;
+}
+
+.gift-card-card a {
+    color: #343A40;
+    margin-top: 0;
+}
+
+.gift-card-card .card-body {
+    padding-top: 0.5rem;
+}

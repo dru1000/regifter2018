@@ -15,10 +15,11 @@
 
         <div class="row">
 
-            <div class="col-md-8">
+            <div class="col-md-8 pr-5">
                 <form method="POST" action="/gift-cards">
                     {{ csrf_field() }}
-                    <h2>Choose a sales price</h2>
+                    <h2>Sales price</h2>
+
 
                     <div class="form-group">
                         <label for="value">Gift Card Value</label>
@@ -26,30 +27,31 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroupPrepend">$</span>
                             </div>
-                            <input name="value" type="number" class="form-control" id="value" aria-describedby="emailHelp" placeholder="Enter gift card value">
+                            <input name="value" type="number" class="form-control form-control-lg" id="value" aria-describedby="emailHelp" placeholder="Enter gift card value">
                         </div>
                         <small id="emailHelp" class="form-text text-muted">We accept gift cards up the the value of $200.</small>
                     </div>
 
                     <div class="form-group">
                         <label for="discount">Percentage Discount</label>
-                        <input name="discount" type="number" class="form-control" id="discount" placeholder="Discount">
+                        <input name="discount" type="number" class="form-control form-control-lg" id="discount" placeholder="Discount">
                     </div>
-                    <div class="form-group">
-                        <label for="sale_price">Sale Price</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroupPrepend">$</span>
-                            </div>
-                            <input name="sale_price" type="text" class="form-control" id="sale_price" readonly="readonly">
+
+
+                    <div class="my-5">
+                        <h3 class="mr-2 d-inline">Your sale price = </h3>
+                        <div class="alert alert-primary h3 d-inline" id="sale_price" role="alert">
+                            $0.00
                         </div>
                     </div>
+
+                    <hr>
 
                     <h2>Gift Card Details</h2>
 
                     <div class="form-group">
                         <label for="expiry">Expiry Date</label>
-                        <input name="expiry" type="text" class="form-control" id="expiry">
+                        <input name="expiry" type="text" class="form-control form-control-lg" id="expiry">
                     </div>
                     <div class="form-group">
                         <label for="serial">Serial Number</label>
@@ -59,7 +61,7 @@
                                         <i class="fas fa-lock"></i>
                                     </span>
                             </div>
-                            <input name="serial" type="text" class="form-control" id="serial">
+                            <input name="serial" type="text" class="form-control form-control-lg" id="serial">
                         </div>
                     </div>
 
@@ -71,7 +73,7 @@
                                         <i class="fas fa-lock"></i>
                                     </span>
                             </div>
-                            <input name="pin" type="text" class="form-control" id="pin">
+                            <input name="pin" type="text" class="form-control form-control-lg" id="pin">
                         </div>
                     </div>
 
@@ -114,11 +116,25 @@
 <script>
     $(document).ready(function () {
         //Calculate Sale Price
-        $("#discount").change(function () {
+        /* $("#discount").change(function () {
             var discountValue = $("#value").val() * ($("#discount").val() / 100);
             var salePrice = $("#value").val() - discountValue;
             //alert("Sale Price = " + salePrice);
             $("#sale_price").val(salePrice.toFixed(2));
+        }); */
+
+        $("#discount").on('input', function () {
+            var discountValue = $("#value").val() * ($("#discount").val() / 100);
+            var salePrice = $("#value").val() - discountValue;
+            //alert("Sale Price = " + salePrice);
+            $("#sale_price").text("$" + salePrice.toFixed(2));
+        });
+
+        $("#value").on('input', function () {
+            var discountValue = $("#value").val() * ($("#discount").val() / 100);
+            var salePrice = $("#value").val() - discountValue;
+            //alert("Sale Price = " + salePrice);
+            $("#sale_price").text("$" + salePrice.toFixed(2));
         });
     });
 
