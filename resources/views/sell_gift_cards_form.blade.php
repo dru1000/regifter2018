@@ -1,4 +1,8 @@
 @extends('layouts.app') 
+@section('css')
+<link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet">
+@endsection
+ 
 @section('content')
 
 <section class="jumbotron text-center">
@@ -15,10 +19,11 @@
 
         <div class="row">
 
-            <div class="col-md-8">
+            <div class="col-md-7 pr-5">
                 <form method="POST" action="/gift-cards">
                     {{ csrf_field() }}
-                    <h2>Choose a sales price</h2>
+                    <h2>Set Sales price</h2>
+
 
                     <div class="form-group">
                         <label for="value">Gift Card Value</label>
@@ -26,31 +31,47 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroupPrepend">$</span>
                             </div>
-                            <input name="value" type="number" class="form-control" id="value" aria-describedby="emailHelp" placeholder="Enter gift card value">
+                            <input name="value" type="number" class="form-control form-control-lg" id="value" aria-describedby="emailHelp" placeholder="Enter gift card value"
+                                required>
                         </div>
-                        <small id="emailHelp" class="form-text text-muted">We accept gift cards up the the value of $200.</small>
+                        <small class="form-text text-muted">We accept gift cards up the the value of $200.</small>
                     </div>
 
-                    <div class="form-group">
-                        <label for="discount">Percentage Discount</label>
-                        <input name="discount" type="number" class="form-control" id="discount" placeholder="Discount">
+                    <div>
+                        <p class="mb-1">Percentage Discount</p>
+
+                        <div class="d-flex">
+                            <div class="mt-2 mr-2 w-100" name="slider" id="slider" style=""></div>
+                            <div class="h4" id="discount">15%</div>
+                        </div>
+                        <input type="hidden" id="discount_hidden" name="discount_hidden" value="0">
+                        <small class="form-text text-muted">Minimum discount is 10%.</small>
                     </div>
-                    <div class="form-group">
-                        <label for="sale_price">Sale Price</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroupPrepend">$</span>
-                            </div>
-                            <input name="sale_price" type="text" class="form-control" id="sale_price" readonly="readonly">
+
+
+                    <div class="my-5">
+                        <h3 class="mr-2 d-inline">Your sale price = </h3>
+                        <div class="alert alert-success h3 d-inline" id="sale_price" role="alert">
+                            $0.00
                         </div>
                     </div>
+
+                    <hr>
 
                     <h2>Gift Card Details</h2>
 
-                    <div class="form-group">
-                        <label for="expiry">Expiry Date</label>
-                        <input name="expiry" type="text" class="form-control" id="expiry">
+                    <div class="form-group mb-1">
+                        <label for="date_picker">Expiry Date</label>
+                        <input type="text" name="date_picker" id="date_picker" class="form-control" required>
                     </div>
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" value="" name="no_expiry" id="no_expiry">
+                        <label class="form-check-label" for="no_expiry">
+                              My gift card doesn't have an expiry date
+                        </label>
+                    </div>
+
                     <div class="form-group">
                         <label for="serial">Serial Number</label>
                         <div class="input-group">
@@ -59,7 +80,7 @@
                                         <i class="fas fa-lock"></i>
                                     </span>
                             </div>
-                            <input name="serial" type="text" class="form-control" id="serial">
+                            <input name="serial" type="text" class="form-control form-control-lg" id="serial" required>
                         </div>
                     </div>
 
@@ -71,11 +92,11 @@
                                         <i class="fas fa-lock"></i>
                                     </span>
                             </div>
-                            <input name="pin" type="text" class="form-control" id="pin">
+                            <input name="pin" type="text" class="form-control form-control-lg" id="pin" required>
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block mt-4">Submit Gift Card</button>
 
                     <input type="hidden" id="retailer_id" name="retailer_id" value="{{ $retailer->id }}">
                 </form>
@@ -83,7 +104,7 @@
 
             </div>
 
-            <div class="col-md-4 mb-4">
+            <div class="col-md-5 mb-4">
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
                     <span class="text-muted">Information</span>
                 </h4>
@@ -105,22 +126,72 @@
 
         </div>
 
+
+
+
     </div>
-</div>
 @endsection
  
 @section('js')
 
-<script>
-    $(document).ready(function () {
-        //Calculate Sale Price
-        $("#discount").change(function () {
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+
+        //UPDATE SALE PRICE WHEN VALUE CHANGES
+        $("#value").on('input', function () {
             var discountValue = $("#value").val() * ($("#discount").val() / 100);
             var salePrice = $("#value").val() - discountValue;
             //alert("Sale Price = " + salePrice);
-            $("#sale_price").val(salePrice.toFixed(2));
+            $("#sale_price").text("$" + salePrice.toFixed(2));
         });
-    });
 
-</script>
+        //INITIALISE JQUERYUI RANGE SLIDER
+        $( "#slider" ).slider({
+        orientation: "horizontal",
+        range: "min",
+        min:0,
+        max: 90,
+        value: 20,
+        //When the sliders value us changed
+        slide: function(event, ui) {
+                //Stop the user being able to move the slider below the minimum 
+                if (ui.value < 10) {
+                    return false;
+                }
+                //Update percentage discount text
+                $("#discount").text(ui.value + "%");
+                //Update sales price amount text
+                var discountValue = $("#value").val() * (ui.value / 100);
+                var salePrice = $("#value").val() - discountValue;
+                $("#sale_price").text("$" + salePrice.toFixed(2));
+            }
+        });
+
+        //INITIALISE JQUERYUI DATE PICKER
+        $( "#date_picker" ).datepicker({
+            dateFormat: "dd-MM-yy",
+            changeMonth: true,
+            changeYear: true
+        });
+
+        //DISABLE & CLEAR EXPIRY DATE
+        $( "#no_expiry" ).click(function() {
+            var isDisabled = $( "#date_picker" ).datepicker( "option", "disabled" );
+            if (isDisabled == false) {
+                $( "#date_picker" ).datepicker( "option", "disabled", true );
+                $( "#date_picker" ).datepicker( "setDate", null );
+            } else {
+                $( "#date_picker" ).datepicker( "option", "disabled", false );
+            }
+            
+        });
+
+    });
+    </script>
+
+
+    <script>
+
+    </script>
 @endsection
