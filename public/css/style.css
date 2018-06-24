@@ -16,7 +16,8 @@ main {
 .gift-card-card .card-body {
     padding-top: 0.5rem;
 }
-.ui-slider-range { 
+
+.ui-slider-range {
     background: #007bff;
 }
 

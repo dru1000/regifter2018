@@ -31,29 +31,27 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroupPrepend">$</span>
                             </div>
-                            <input name="value" type="number" class="form-control form-control-lg" id="value" aria-describedby="emailHelp" placeholder="Enter gift card value">
+                            <input name="value" type="number" class="form-control form-control-lg" id="value" aria-describedby="emailHelp" placeholder="Enter gift card value"
+                                required>
                         </div>
                         <small id="emailHelp" class="form-text text-muted">We accept gift cards up the the value of $200.</small>
                     </div>
 
                     <div>
                         <p class="mb-1">Percentage Discount</p>
-                        <div class="row">
-                            <div class="col pt-2">
-                                <div class="" name="slider" id="slider" style=""></div>
-                            </div>
-                            <div class="col-2  text-right">
-                                <div class="h4" id="discount">15%</div>
-                            </div>
-                            <input type="hidden" id="discount_hidden" name="discount_hidden" value="0">
+
+                        <div class="d-flex">
+                            <div class="mt-2 mr-2 w-100" name="slider" id="slider" style=""></div>
+                            <div class="h4" id="discount">15%</div>
                         </div>
+                        <input type="hidden" id="discount_hidden" name="discount_hidden" value="0">
                         <small id="emailHelp" class="form-text text-muted">Minimum discount is 10%.</small>
                     </div>
 
 
                     <div class="my-5">
                         <h3 class="mr-2 d-inline">Your sale price = </h3>
-                        <div class="alert alert-primary h3 d-inline" id="sale_price" role="alert">
+                        <div class="alert alert-success h3 d-inline" id="sale_price" role="alert">
                             $0.00
                         </div>
                     </div>
@@ -64,7 +62,7 @@
 
                     <div class="form-group">
                         <label for="expiry">Expiry Date</label>
-                        <input type="text" name="datepicker" id="datepicker" class="form-control">
+                        <input type="text" name="datepicker" id="datepicker" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="serial">Serial Number</label>
@@ -74,7 +72,7 @@
                                         <i class="fas fa-lock"></i>
                                     </span>
                             </div>
-                            <input name="serial" type="text" class="form-control form-control-lg" id="serial">
+                            <input name="serial" type="text" class="form-control form-control-lg" id="serial" required>
                         </div>
                     </div>
 
@@ -86,11 +84,11 @@
                                         <i class="fas fa-lock"></i>
                                     </span>
                             </div>
-                            <input name="pin" type="text" class="form-control form-control-lg" id="pin">
+                            <input name="pin" type="text" class="form-control form-control-lg" id="pin" required>
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block mt-4">Submit Gift Card</button>
 
                     <input type="hidden" id="retailer_id" name="retailer_id" value="{{ $retailer->id }}">
                 </form>
