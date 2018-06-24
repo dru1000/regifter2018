@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('retailers')->insert([
             'name' => 'Bunnings',
-            'logo' => 'bunnings',
+            'logo' => 'bunnings.png',
             'url' => 'bunnings',
             'active' => '1',
             'created_at' => date('Y-m-d H:i:s'),
@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('retailers')->insert([
             'name' => 'The Warehouse',
-            'logo' => 'the_warehouse',
+            'logo' => 'the_warehouse.png',
             'url' => 'the-warehouse',
             'active' => '1',
             'created_at' => date('Y-m-d H:i:s'),
@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('retailers')->insert([
             'name' => 'Kathmandu',
-            'logo' => 'kathmandu',
+            'logo' => 'kathmandu.png',
             'url' => 'kathmandu',
             'active' => '1',
             'created_at' => date('Y-m-d H:i:s'),
@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('retailers')->insert([
             'name' => 'Mitre 10',
-            'logo' => 'mitre_10',
+            'logo' => 'mitre_10.png',
             'url' => 'mitre-10',
             'active' => '1',
             'created_at' => date('Y-m-d H:i:s'),
