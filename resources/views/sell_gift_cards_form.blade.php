@@ -19,7 +19,7 @@
 
         <div class="row">
 
-            <div class="col-md-8 pr-5">
+            <div class="col-md-7 pr-5">
                 <form method="POST" action="/gift-cards">
                     {{ csrf_field() }}
                     <h2>Set Sales price</h2>
@@ -34,7 +34,7 @@
                             <input name="value" type="number" class="form-control form-control-lg" id="value" aria-describedby="emailHelp" placeholder="Enter gift card value"
                                 required>
                         </div>
-                        <small id="emailHelp" class="form-text text-muted">We accept gift cards up the the value of $200.</small>
+                        <small class="form-text text-muted">We accept gift cards up the the value of $200.</small>
                     </div>
 
                     <div>
@@ -45,7 +45,7 @@
                             <div class="h4" id="discount">15%</div>
                         </div>
                         <input type="hidden" id="discount_hidden" name="discount_hidden" value="0">
-                        <small id="emailHelp" class="form-text text-muted">Minimum discount is 10%.</small>
+                        <small class="form-text text-muted">Minimum discount is 10%.</small>
                     </div>
 
 
@@ -60,10 +60,18 @@
 
                     <h2>Gift Card Details</h2>
 
-                    <div class="form-group">
-                        <label for="expiry">Expiry Date</label>
-                        <input type="text" name="datepicker" id="datepicker" class="form-control" required>
+                    <div class="form-group mb-1">
+                        <label for="date_picker">Expiry Date</label>
+                        <input type="text" name="date_picker" id="date_picker" class="form-control" required>
                     </div>
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" value="" name="no_expiry" id="no_expiry">
+                        <label class="form-check-label" for="no_expiry">
+                              My gift card doesn't have an expiry date
+                        </label>
+                    </div>
+
                     <div class="form-group">
                         <label for="serial">Serial Number</label>
                         <div class="input-group">
@@ -96,7 +104,7 @@
 
             </div>
 
-            <div class="col-md-4 mb-4">
+            <div class="col-md-5 mb-4">
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
                     <span class="text-muted">Information</span>
                 </h4>
@@ -130,6 +138,7 @@
     <script>
         $(document).ready(function () {
 
+        //UPDATE SALE PRICE WHEN VALUE CHANGES
         $("#value").on('input', function () {
             var discountValue = $("#value").val() * ($("#discount").val() / 100);
             var salePrice = $("#value").val() - discountValue;
@@ -137,7 +146,7 @@
             $("#sale_price").text("$" + salePrice.toFixed(2));
         });
 
-        //JQUERY RANGE SLIDER
+        //INITIALISE JQUERYUI RANGE SLIDER
         $( "#slider" ).slider({
         orientation: "horizontal",
         range: "min",
@@ -159,12 +168,24 @@
             }
         });
 
-        $( "#datepicker" ).datepicker({
+        //INITIALISE JQUERYUI DATE PICKER
+        $( "#date_picker" ).datepicker({
             dateFormat: "dd-MM-yy",
             changeMonth: true,
             changeYear: true
         });
 
+        //DISABLE & CLEAR EXPIRY DATE
+        $( "#no_expiry" ).click(function() {
+            var isDisabled = $( "#date_picker" ).datepicker( "option", "disabled" );
+            if (isDisabled == false) {
+                $( "#date_picker" ).datepicker( "option", "disabled", true );
+                $( "#date_picker" ).datepicker( "setDate", null );
+            } else {
+                $( "#date_picker" ).datepicker( "option", "disabled", false );
+            }
+            
+        });
 
     });
     </script>
