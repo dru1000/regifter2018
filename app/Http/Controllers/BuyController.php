@@ -26,7 +26,7 @@ class BuyController extends Controller
         return view('buy_gift_cards', compact('retailers'));
     }
 
-    public function show($url)
+    public function list($url)
     {
         //Get the retailers name
         $name = \App\Retailer::where('url', $url)->pluck('name');
