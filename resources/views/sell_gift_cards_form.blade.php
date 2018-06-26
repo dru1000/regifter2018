@@ -60,8 +60,8 @@
                     <h2>Gift Card Details</h2>
 
                     <div class="form-group mb-1">
-                        <label for="date_picker">Expiry Date</label>
-                        <input type="text" name="date_picker" id="date_picker" class="form-control" required>
+                        <label for="expiry">Expiry Date</label>
+                        <input type="text" name="expiry" id="expiry" class="form-control" required>
                     </div>
 
                     <div class="form-check mb-3">
@@ -179,7 +179,7 @@
         });
 
         //INITIALISE JQUERYUI DATE PICKER
-        $( "#date_picker" ).datepicker({
+        $( "#expiry" ).datepicker({
             dateFormat: "dd-MM-yy",
             changeMonth: true,
             changeYear: true
@@ -187,12 +187,12 @@
 
         //DISABLE & CLEAR EXPIRY DATE
         $( "#no_expiry" ).click(function() {
-            var isDisabled = $( "#date_picker" ).datepicker( "option", "disabled" );
+            var isDisabled = $( "#expiry" ).datepicker( "option", "disabled" );
             if (isDisabled == false) {
-                $( "#date_picker" ).datepicker( "option", "disabled", true );
-                $( "#date_picker" ).datepicker( "setDate", null );
+                $( "#expiry" ).datepicker( "option", "disabled", true );
+                $( "#expiry" ).datepicker( "setDate", null );
             } else {
-                $( "#date_picker" ).datepicker( "option", "disabled", false );
+                $( "#expiry" ).datepicker( "option", "disabled", false );
             }
             
         });

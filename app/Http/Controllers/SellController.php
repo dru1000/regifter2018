@@ -38,35 +38,26 @@ class SellController extends Controller
 
     public function store()
     {
+
         if (Auth::check()) {
             $user = Auth::user();
 
             $this->validate(request(), [
                 'retailer_id' => 'required|integer',
                 'value' => 'required|integer',
-                'discount' => 'required|integer',
-                'sale_price' => 'required|integer',
+                //'discount' => 'required|integer',
+                //'sale_price' => 'required|integer',
             ]);
 
             GiftCard::create([
                 'user_id' => $user->id,
                 'retailer_id' => request('retailer_id'),
+                'serial' => request('serial'),
                 'value' => request('value'),
                 'discount' => 15,
+                'expiry_date' => date('Y-m-d', strtotime(request('expiry'))),
                 'sale_price' => 15,
             ]);
-
-            /* $card = new \App\GiftCard;
-
-            $card->user_id = $user->id;
-            $card->retailer_id = request('retailer_id');
-            $card->value = request('value');
-            //$card->discount = request('discount');
-            $card->discount = 15;
-            //$card->sale_price = request('sale_price');
-            $card->sale_price = 15;
-
-            $card->save(); */
 
             return view('card_submitted');
 

@@ -54,6 +54,7 @@ class DatabaseSeeder extends Seeder
         DB::table('gift_cards')->insert([
             'user_id' => '1',
             'retailer_id' => '1',
+            'serial' => '123456789',
             'value' => '100',
             'discount' => '20',
             'sale_price' => '80',
@@ -64,6 +65,7 @@ class DatabaseSeeder extends Seeder
         DB::table('gift_cards')->insert([
             'user_id' => '1',
             'retailer_id' => '1',
+            'serial' => '123456789',
             'value' => '50',
             'discount' => '10',
             'sale_price' => '45',
@@ -74,6 +76,7 @@ class DatabaseSeeder extends Seeder
         DB::table('gift_cards')->insert([
             'user_id' => '1',
             'retailer_id' => '2',
+            'serial' => '123456789',
             'value' => '200',
             'discount' => '25',
             'sale_price' => '150',
@@ -84,6 +87,7 @@ class DatabaseSeeder extends Seeder
         DB::table('gift_cards')->insert([
             'user_id' => '1',
             'retailer_id' => '3',
+            'serial' => '123456789',
             'value' => '30',
             'discount' => '10',
             'sale_price' => '27',
