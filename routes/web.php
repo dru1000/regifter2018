@@ -23,6 +23,6 @@ Route::get('/buy-gift-cards/id/{id}', 'BuyController@detail');
 
 Route::get('/sell-gift-cards', 'SellController@index');
 
-Route::get('/sell-gift-cards/{retailer_url}', 'SellController@sell');
+Route::get('/sell-gift-cards/{retailer_url}', 'SellController@create');
 
-Route::post('/gift-cards', 'SellController@create');
+Route::post('/gift-cards', 'SellController@store');

@@ -31,8 +31,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroupPrepend">$</span>
                             </div>
-                            <input name="value" type="number" class="form-control form-control-lg" id="value" aria-describedby="emailHelp" placeholder="Enter gift card value"
-                                required>
+                            <input name="value" type="number" class="form-control form-control-lg" id="value" aria-describedby="emailHelp" placeholder="Enter gift card value">
                         </div>
                         <small class="form-text text-muted">We accept gift cards up the the value of $200.</small>
                     </div>
@@ -51,7 +50,7 @@
 
                     <div class="my-5">
                         <h3 class="mr-2 d-inline">Your sale price = </h3>
-                        <div class="alert alert-success h3 d-inline" id="sale_price" role="alert">
+                        <div class="alert alert-success h3 d-inline" name="sale_price" id="sale_price" role="alert">
                             $0.00
                         </div>
                     </div>
@@ -99,6 +98,17 @@
                     <button type="submit" class="btn btn-primary btn-lg btn-block mt-4">Submit Gift Card</button>
 
                     <input type="hidden" id="retailer_id" name="retailer_id" value="{{ $retailer->id }}">
+
+                    <br> @if (count($errors))
+                    <div class="alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+
                 </form>
 
 

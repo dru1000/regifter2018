@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class GiftCard extends Model
 {
-    //
+    //Allows Mass Assignment
+    protected $guarded = [];
 }
