@@ -4,26 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class GiftCardController extends Controller
+class RetailerController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($url)
+    public function index($retailerID = null)
     {
-        //Get the retailers name
-        $name = \App\Retailer::where('url', $url)->pluck('name');
-
-        //Get the retailers ID
-        $retailer_id = \App\Retailer::where('url', $url)->pluck('id');
-
-        //Find all gift cards belonging to the retailer with that ID
-        $cards = \App\GiftCard::where('retailer_id', $retailer_id)
+        $retailers = \App\Retailer::
+            when($retailerID, function ($query) use ($retailerID) {
+            return $query->where('id', $retailerID);
+        }, function ($query) {
+            return $query->orderBy('name', 'asc');
+        })
             ->get();
 
-        return view('buy_gift_cards_show', compact('cards', 'name'));
+        return view('buy_gift_cards', compact('retailers'));
     }
 
     /**
