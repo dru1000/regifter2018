@@ -11,7 +11,7 @@ class RetailerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($retailerID = null)
+    public function index(Request $request, $retailerID = null)
     {
         $retailers = \App\Retailer::
             when($retailerID, function ($query) use ($retailerID) {
@@ -21,7 +21,15 @@ class RetailerController extends Controller
         })
             ->get();
 
-        return view('buy_gift_cards', compact('retailers'));
+            
+        if ($request->route()->named('buy')) {
+            return view('buy_gift_cards', compact('retailers'));
+        }
+
+        if ($request->route()->named('sell')) {
+            return view('sell_gift_cards', compact('retailers'));
+        }
+        
     }
 
     /**

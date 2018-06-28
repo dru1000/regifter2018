@@ -15,15 +15,13 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 
-//Route::get('/buy-gift-cards', 'BuyController@index');
-Route::get('/buy-gift-cards', 'RetailerController@index');
+Route::get('/buy-gift-cards', 'RetailerController@index')->name('buy');
 
-//Route::get('/buy-gift-cards/{retailer_url}', 'BuyController@list');
 Route::get('/buy-gift-cards/{url?}', 'GiftCardController@index');
 
-Route::get('/buy-gift-cards/id/{id}', 'BuyController@detail');
+Route::get('/buy-gift-cards/id/{id}', 'GiftCardController@show');
 
-Route::get('/sell-gift-cards', 'SellController@index');
+Route::get('/sell-gift-cards', 'RetailerController@index')->name('sell');
 
 Route::get('/sell-gift-cards/{retailer_url}', 'SellController@create');
 
