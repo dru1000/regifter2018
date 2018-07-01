@@ -27,6 +27,21 @@ class GiftCardController extends Controller
     }
 
     /**
+     * Display a listing of the gift cards with the biggest discounts.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function topCards()
+    {
+        //Find all gift cards belonging to the retailer with that ID
+        $cards = \App\GiftCard::where('active', 1)
+            ->orderBy('discount', 'desc')
+            ->get();
+
+        return view('home', compact('cards'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

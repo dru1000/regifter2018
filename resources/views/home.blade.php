@@ -15,107 +15,25 @@
 </section>
 
 <div class="album py-5 bg-light">
-    <div class="container">
+    <div class="container justify-content-center">
 
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <img class="card-img-top" src="{{ asset('img/thumbnail.svg') }}" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This
-                            content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <img class="card-img-top" src="{{ asset('img/thumbnail.svg') }}" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This
-                            content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <img class="card-img-top" src="{{ asset('img/thumbnail.svg') }}" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This
-                            content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
+        <div class="d-inline-flex flex-wrap justify-content-center">
+
+            @foreach ($cards as $card)
+
+            <div class="card mb-3 mx-3 box-shadow gift-card-card">
+                <a href="/buy-gift-cards/{{ $card->retailer->url }}"><img class="card-img-top" src="{{ asset('img/').'/retailers/'.$card->retailer->logo }}" alt="Card image cap"></a>
+                <div class="card-body px-3">
+                    <h4 class="card-text"><a href="/buy-gift-cards/{{ $card->retailer->url }}">{{ $card->retailer->name }}</a></h4>
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a href="/buy-gift-cards/{{ $card->retailer->url }}" class="btn btn-sm btn-outline-primary">View</a>
+                        <small class="text-muted">Save up to {{ $card->discount }}%</small>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <img class="card-img-top" src="{{ asset('img/thumbnail.svg') }}" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This
-                            content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <img class="card-img-top" src="{{ asset('img/thumbnail.svg') }}" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This
-                            content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <img class="card-img-top" src="{{ asset('img/thumbnail.svg') }}" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This
-                            content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                            <small class="text-muted">9 mins</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            @endforeach
 
         </div>
     </div>

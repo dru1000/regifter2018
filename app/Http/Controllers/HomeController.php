@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class HomeController extends Controller
 {
     /**
@@ -13,7 +11,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        
+
     }
 
     /**
@@ -23,6 +21,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $cards = \App\GiftCard::where('active', 1)
+            ->orderBy('discount', 'desc')
+            ->get();
+
+        $cards = $cards->unique('retailer_id');
+
+        $cards->values()->all();
+
+        return view('home', compact('cards'));
     }
 }
