@@ -15,7 +15,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Return the gift cards with the biggest discount
      *
      * @return \Illuminate\Http\Response
      */
@@ -25,8 +25,10 @@ class HomeController extends Controller
             ->orderBy('discount', 'desc')
             ->get();
 
-        $cards = $cards->unique('retailer_id');
+        //Only return one of each retailer
+        $cards = $cards->unique('retailer_id')->take(4);
 
+        //Resets the index after the unique method
         $cards->values()->all();
 
         return view('home', compact('cards'));

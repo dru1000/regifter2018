@@ -8,6 +8,10 @@ main {
     max-width: 237px;
 }
 
+.gift-card-card-large {
+    max-width: 300px;
+}
+
 .gift-card-card a {
     color: #343A40;
     margin-top: 0;

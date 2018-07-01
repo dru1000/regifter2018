@@ -15,13 +15,13 @@
 </section>
 
 <div class="album py-5 bg-light">
-    <div class="container justify-content-center">
+    <div class="container">
 
-        <div class="d-inline-flex flex-wrap justify-content-center">
+        <div class="d-flex justify-content-around">
 
             @foreach ($cards as $card)
 
-            <div class="card mb-3 mx-3 box-shadow gift-card-card">
+            <div class="card mb-3 mx-3 box-shadow gift-card-card gift-card-card-large">
                 <a href="/buy-gift-cards/{{ $card->retailer->url }}"><img class="card-img-top" src="{{ asset('img/').'/retailers/'.$card->retailer->logo }}" alt="Card image cap"></a>
                 <div class="card-body px-3">
                     <h4 class="card-text"><a href="/buy-gift-cards/{{ $card->retailer->url }}">{{ $card->retailer->name }}</a></h4>
