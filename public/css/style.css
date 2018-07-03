@@ -32,3 +32,9 @@ main {
 .ui-slider-handle {
     z-index: 1 !important;
 }
+
+.home-hero {
+    color: white;
+    /* min-height: 50vh; */
+    background-image: linear-gradient(to right top, #ed1c24, #fc6105, #ff9400, #ffc200, #fcee21);
+}
