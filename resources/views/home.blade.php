@@ -2,11 +2,10 @@
 @section('content')
 
 <section class="text-center home-hero d-flex align-items-center h-50">
-    <div class="container">
+    <div class="container home-hero text-left">
 
-        <h1 class="jumbotron-heading">Homepage</h1>
-        <p class="lead">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but
-            not too short so folks don't simply skip over it entirely.</p>
+        <h1 class="jumbotron-heading">NZ's Gift Card Marketplace</h1>
+        <p class="lead w-50">Buy and sell unwanted gift cards for cash</p>
         <p>
             <a href="#" class="btn btn-primary my-2">Main call to action</a>
             <a href="#" class="btn btn-secondary my-2">Secondary action</a>
@@ -16,7 +15,9 @@
 
 </section>
 
-<div class="album py-5 bg-light">
+<hr class="hr-section mb-0">
+<img src="{{ asset('img/red-arrow.png') }}" alt="arrow" class="red-arrow mx-auto d-block">
+
     <div class="container">
 
         <div class="d-flex justify-content-around">
@@ -39,5 +40,5 @@
 
         </div>
     </div>
-</div>
+
 @endsection

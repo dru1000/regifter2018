@@ -1,7 +1,21 @@
+/* colours
+Text #343A40
+Watermelon #ff3b3f
+Light Blue #caebf2
+Grey #a9a9a9
+Neutral #efefef
+*/
+
 html,
 body,
 main {
     height: 100%;
+}
+
+body {
+    background-image: url(../img/dust_scratches.png);
+    background-repeat: repeat;
+    color: #343A40;
 }
 
 .gift-card-card {
@@ -34,7 +48,42 @@ main {
 }
 
 .home-hero {
-    color: white;
+    /* color: white; */
     /* min-height: 50vh; */
-    background-image: linear-gradient(to right top, #ed1c24, #fc6105, #ff9400, #ffc200, #fcee21);
+    background-image: url(../img/card.png);
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.hr-section {
+    background-color: #ff3b3f;
+    height: 20px;
+}
+
+.red-arrow {
+    margin-bottom: 100px;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #ff3b3f;
+    border-color: #ff3b3f;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #d82f32;
+    border-color: #d82f32;
+}
+
+.btn-secondary {
+    color: #343A40;
+    background-color: #caebf2;
+    border-color: #caebf2;
+}
+
+.btn-secondary:hover {
+    color: #343A40;
+    background-color: #b9dfe7;
+    border-color: #b9dfe7;
 }
