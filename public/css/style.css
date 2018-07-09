@@ -50,9 +50,10 @@ body {
 .home-hero {
     /* color: white; */
     /* min-height: 50vh; */
-    background-image: url(../img/card.png);
+    background-image: url(../img/gift-cards-hero.jpg);
     background-repeat: no-repeat;
-    background-position: right;
+    background-position: center;
+    background-size: cover;
 }
 
 .hr-section {
@@ -77,13 +78,13 @@ body {
 }
 
 .btn-secondary {
-    color: #343A40;
-    background-color: #caebf2;
-    border-color: #caebf2;
+    color: #fff;
+    background-color: #a9a9a9;
+    border-color: #a9a9a9;
 }
 
 .btn-secondary:hover {
-    color: #343A40;
-    background-color: #b9dfe7;
-    border-color: #b9dfe7;
+    color: #fff;
+    background-color: #929292;
+    border-color: #929292;
 }
