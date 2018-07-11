@@ -1,7 +1,7 @@
 @extends('layouts.app') 
 @section('content')
 
-<section class="text-center home-hero d-flex align-items-center h-50">
+<section class="text-center home-hero d-flex align-items-center h-50" style="margin-bottom: 130px">
     <div class="container text-left">
 
         <h1 class="display-3">NZ's Gift Card Marketplace</h1>
@@ -15,10 +15,13 @@
 
 </section>
 
+{{--
 <hr class="hr-section my-0">
-<img src="{{ asset('img/red-arrow.png') }}" alt="arrow" class="red-arrow mx-auto d-block">
+<img src="{{ asset('img/red-arrow.png') }}" alt="arrow" class="red-arrow mx-auto d-block"> --}}
 
-<div class="container">
+<div class="container mt-5">
+
+    <h2 class="text-center display-4 my-5">Todays best deals</h2>
 
     <div class="d-flex justify-content-around">
 

@@ -13,7 +13,7 @@ main {
 }
 
 body {
-    background-image: url(../img/dust_scratches.png);
+    background-image: url(../img/dust_scratches1.png);
     background-repeat: repeat;
     color: #343A40;
 }
@@ -54,6 +54,9 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    border-bottom: #a9a9a9;
+    border-bottom-style: solid;
+    border-width: 1px;
 }
 
 .hr-section {
